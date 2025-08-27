@@ -10,7 +10,7 @@ const Header = () => {
       animate={{ opacity: 1, y: 0 }}
       className="glass sticky top-0 z-50 w-full border-b border-border/50 backdrop-blur-lg"
     >
-      <div className="container flex h-16 items-center justify-between px-6">
+      <div className="container flex h-16 items-center justify-start px-6 space-x-6">
         {/* Logo & Brand */}
         <motion.div
           className="flex items-center space-x-3"
@@ -23,7 +23,7 @@ const Header = () => {
               <Calendar className="h-6 w-6 text-white" />
             </div>
           </div>
-          <div>
+          <div className="text-left">
             <h1 className="gradient-text text-xl font-bold tracking-tight">
               Weekly Planner
             </h1>
@@ -45,7 +45,7 @@ const Header = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 ml-auto">
           <Button
             size="sm"
             className="bg-gradient-primary text-white border-0 hover:opacity-90"

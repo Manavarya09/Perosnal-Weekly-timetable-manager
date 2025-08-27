@@ -56,12 +56,12 @@ const WeeklyGrid = () => {
         animate={{ opacity: 1, y: 0 }}
         className="mb-6"
       >
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col space-y-4 mb-4">
           <div>
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-2xl font-bold text-left">
               {format(startDate, "MMMM dd")} - {format(addDays(startDate, 6), "dd, yyyy")}
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-left">
               {sampleTasks.length} tasks this week
             </p>
           </div>
@@ -94,8 +94,8 @@ const WeeklyGrid = () => {
                 hover:shadow-md transition-all duration-200
               `}>
                 {/* Day Header */}
-                <div className="flex items-center justify-between mb-4">
-                  <div>
+                <div className="flex items-start justify-start mb-4">
+                  <div className="text-left">
                     <h3 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">
                       {format(day, "EEE")}
                     </h3>
@@ -107,7 +107,7 @@ const WeeklyGrid = () => {
                     </div>
                   </div>
                   {isCurrentDay && (
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow" />
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse-glow ml-2 mt-1" />
                   )}
                 </div>
 

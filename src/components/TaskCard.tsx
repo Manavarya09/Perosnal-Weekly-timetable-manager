@@ -64,12 +64,12 @@ const TaskCard = ({ task }: TaskCardProps) => {
     >
       <Card className="p-3 cursor-pointer hover:shadow-md transition-all duration-200 border-l-4 border-l-primary/50">
         <div className="flex items-start justify-between mb-2">
-          <div className="flex-1 min-w-0">
-            <h4 className="font-medium text-sm leading-tight mb-1 truncate">
+          <div className="flex-1 min-w-0 text-left">
+            <h4 className="font-medium text-sm leading-tight mb-1 truncate text-left">
               {task.title}
             </h4>
             {task.description && (
-              <p className="text-xs text-muted-foreground line-clamp-2">
+              <p className="text-xs text-muted-foreground line-clamp-2 text-left">
                 {task.description}
               </p>
             )}
