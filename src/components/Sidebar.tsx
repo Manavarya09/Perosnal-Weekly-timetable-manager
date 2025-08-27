@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 import {
   Calendar,
   CheckSquare,
@@ -17,14 +18,16 @@ import { Progress } from "./ui/progress";
 import { Badge } from "./ui/badge";
 
 const Sidebar = () => {
+  const location = useLocation();
+  
   const menuItems = [
-    { icon: Calendar, label: "Weekly View", active: true },
-    { icon: CheckSquare, label: "All Tasks", count: 12 },
-    { icon: Target, label: "Goals", count: 3 },
-    { icon: Timer, label: "Pomodoro" },
-    { icon: Heart, label: "Habits", streak: 5 },
-    { icon: BarChart3, label: "Analytics" },
-    { icon: Settings, label: "Settings" }
+    { icon: Calendar, label: "Weekly View", path: "/", count: null, streak: null },
+    { icon: CheckSquare, label: "All Tasks", path: "/tasks", count: 12, streak: null },
+    { icon: Target, label: "Goals", path: "/goals", count: 3, streak: null },
+    { icon: Timer, label: "Pomodoro", path: "/pomodoro", count: null, streak: null },
+    { icon: Heart, label: "Habits", path: "/habits", count: null, streak: 5 },
+    { icon: BarChart3, label: "Analytics", path: "/analytics", count: null, streak: null },
+    { icon: Settings, label: "Settings", path: "/settings", count: null, streak: null }
   ];
 
   const weekStats = {
@@ -68,24 +71,27 @@ const Sidebar = () => {
               transition={{ delay: index * 0.05 }}
             >
               <Button
-                variant={item.active ? "secondary" : "ghost"}
+                asChild
+                variant={location.pathname === item.path ? "secondary" : "ghost"}
                 className={`
                   w-full justify-start h-10 px-3
-                  ${item.active ? "bg-primary/10 text-primary border-primary/20" : ""}
+                  ${location.pathname === item.path ? "bg-primary/10 text-primary border-primary/20" : ""}
                 `}
               >
-                <item.icon className="h-4 w-4 mr-3" />
-                <span className="flex-1 text-left">{item.label}</span>
-                {item.count && (
-                  <Badge variant="secondary" className="text-xs">
-                    {item.count}
-                  </Badge>
-                )}
-                {item.streak && (
-                  <Badge className="text-xs bg-gradient-accent">
-                    🔥 {item.streak}
-                  </Badge>
-                )}
+                <Link to={item.path}>
+                  <item.icon className="h-4 w-4 mr-3" />
+                  <span className="flex-1 text-left">{item.label}</span>
+                  {item.count && (
+                    <Badge variant="secondary" className="text-xs">
+                      {item.count}
+                    </Badge>
+                  )}
+                  {item.streak && (
+                    <Badge className="text-xs bg-gradient-accent">
+                      🔥 {item.streak}
+                    </Badge>
+                  )}
+                </Link>
               </Button>
             </motion.div>
           ))}
